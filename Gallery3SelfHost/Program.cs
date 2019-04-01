@@ -12,7 +12,7 @@ namespace Gallery3SelfHost
     {
         static void Main(string[] args)
         {
-            Uri _baseAddress = new Uri("http://localhost:60064");
+            Uri _baseAddress = new Uri("http://localhost:60065");
             HttpSelfHostConfiguration config = new HttpSelfHostConfiguration(_baseAddress);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
@@ -24,6 +24,9 @@ namespace Gallery3SelfHost
             server.OpenAsync().Wait();
             Console.WriteLine("Gallery Web-API Self hosted on" + _baseAddress);
             Console.WriteLine("Hit Enter to exit...");
+            clsGalleryController clsGalleryController = new clsGalleryController();
+            List<string> list = clsGalleryController.GetArtistNames();
+            Console.WriteLine(list[1]);
             Console.ReadLine();
             server.CloseAsync().Wait();
         }
