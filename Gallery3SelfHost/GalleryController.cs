@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Gallery3SelfHost
 {
-    public class clsGalleryController : System.Web.Http.ApiController
+    public class GalleryController : System.Web.Http.ApiController
     {
         public List<string> GetArtistNames()
         {
