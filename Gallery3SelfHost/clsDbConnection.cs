@@ -4,7 +4,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace Gallery3SelfHost
+namespace Gallery3WinForm
 {
     public class clsDbConnection
     {

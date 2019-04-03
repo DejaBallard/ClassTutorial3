@@ -60,7 +60,6 @@ namespace Gallery3WinForm
             this.btnQuit.Size = new System.Drawing.Size(80, 32);
             this.btnQuit.TabIndex = 11;
             this.btnQuit.Text = "Quit";
-            //this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
             // btnDelete
             // 
@@ -69,7 +68,6 @@ namespace Gallery3WinForm
             this.btnDelete.Size = new System.Drawing.Size(80, 32);
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete";
-            //this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
@@ -78,7 +76,6 @@ namespace Gallery3WinForm
             this.btnAdd.Size = new System.Drawing.Size(80, 32);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
-           // this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Label1
             // 
@@ -94,7 +91,7 @@ namespace Gallery3WinForm
             this.lstArtists.Name = "lstArtists";
             this.lstArtists.Size = new System.Drawing.Size(136, 173);
             this.lstArtists.TabIndex = 7;
-           // this.lstArtists.DoubleClick += new System.EventHandler(this.lstArtists_DoubleClick);
+            this.lstArtists.DoubleClick += new System.EventHandler(this.lstArtists_DoubleClick);
             // 
             // btnGalName
             // 
@@ -103,7 +100,6 @@ namespace Gallery3WinForm
             this.btnGalName.Size = new System.Drawing.Size(80, 32);
             this.btnGalName.TabIndex = 14;
             this.btnGalName.Text = "Gal. Name";
-            //this.btnGalName.Click += new System.EventHandler(this.btnGalName_Click);
             // 
             // frmMain
             // 
@@ -120,7 +116,6 @@ namespace Gallery3WinForm
             this.Controls.Add(this.lstArtists);
             this.Name = "frmMain";
             this.Text = "Gallery (v3 C)";
-            //this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
 
         }

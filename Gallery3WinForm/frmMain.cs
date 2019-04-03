@@ -46,6 +46,21 @@ namespace Gallery3WinForm
                 MessageBox.Show(e.ToString());
             }
         }
+        private void lstArtists_DoubleClick(object sender, EventArgs e)
+        {
+            string lcKey;
+            lcKey = Convert.ToString(lstArtists.SelectedItem);
+            if (lcKey != null)
+                try
+                {
+                    frmArtist.Run(lstArtists.SelectedItem as string);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "This should never occur");
+                }
+        }
+
         #region
         //private void btnAdd_Click(object sender, EventArgs e)
         //{
@@ -58,23 +73,6 @@ namespace Gallery3WinForm
         //        MessageBox.Show(ex.Message, "Error adding new artist");
         //    }
         //}
-
-        //private void lstArtists_DoubleClick(object sender, EventArgs e)
-        //{
-        //    string lcKey;
-
-        //    lcKey = Convert.ToString(lstArtists.SelectedItem);
-        //    if (lcKey != null)
-        //        try
-        //        {
-        //            frmArtist.Run(_ArtistList[lcKey]);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, "This should never occur");
-        //        }
-        //}
-
         //private void btnQuit_Click(object sender, EventArgs e)
         //{
         //    try
@@ -130,7 +128,5 @@ namespace Gallery3WinForm
         //    GalleryNameChanged(_ArtistList.GalleryName);
         //}
         #endregion
-
-
     }
 }
