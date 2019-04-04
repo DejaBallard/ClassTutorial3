@@ -30,7 +30,7 @@ namespace Gallery3SelfHost
                     Name = (string)lcResult.Rows[0]["Name"],
                     Speciality = (string)lcResult.Rows[0]["Speciality"],
                     Phone = (string)lcResult.Rows[0]["Phone"],
-                    WorksList = GetArtistWork(Name)
+                    WorksList = GetArtistWork(Name),
                 };
             else
                 return null;
@@ -53,6 +53,7 @@ namespace Gallery3SelfHost
                 Name = Convert.ToString(prDataRow["Name"]),
                 Date = Convert.ToDateTime(prDataRow["Date"]),
                 Value = Convert.ToDecimal(prDataRow["Value"]),
+                WorkType = Convert.ToChar(prDataRow["WorkType"]),
                 Height = prDataRow["Height"] is DBNull ? (float?)null : Convert.ToSingle(prDataRow["Height"]),
                 Width = prDataRow["Width"] is DBNull ? (float?)null : Convert.ToSingle(prDataRow["Width"]),
                 Type = Convert.ToString(prDataRow["Type"]),

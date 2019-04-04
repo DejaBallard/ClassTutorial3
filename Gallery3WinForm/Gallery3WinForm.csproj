@@ -55,6 +55,18 @@
     <Compile Include="frmArtist.designer.cs">
       <DependentUpon>frmArtist.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPainting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPainting.designer.cs">
+      <DependentUpon>frmPainting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWork.designer.cs">
+      <DependentUpon>frmWork.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceClient.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -75,6 +87,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPainting.resx">
+      <DependentUpon>frmPainting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWork.resx">
+      <DependentUpon>frmWork.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>

@@ -108,8 +108,7 @@ namespace Gallery3WinForm
         {
             try
             {
-                //_WorksList.EditWork(lstWorks.SelectedIndex);
-                //UpdateDisplay();
+                frmWork.DispatchWorkForm(lstWorks.SelectedValue as clsAllWork);
                 frmMain.Instance.UpdateDisplay();
             }
             catch (Exception ex)

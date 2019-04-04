@@ -20,6 +20,7 @@ namespace Gallery3SelfHost
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public decimal Value { get; set; }
+        public char WorkType { get; set; }
         //Painting and Photograph
         public float? Height { get; set; }
         public float? Width { get; set; }
