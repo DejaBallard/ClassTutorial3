@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.SelfHost;
+using Gallery3SelfHost;
 
 namespace Gallery3WinForm
 {

@@ -76,6 +76,7 @@ namespace Gallery3WinForm
             this.btnAdd.Size = new System.Drawing.Size(80, 32);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Label1
             // 

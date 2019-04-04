@@ -27,10 +27,12 @@ namespace Gallery3WinForm
                 lcArtistForm = new frmArtist();
                 if (string.IsNullOrEmpty(prArtistName))
                     lcArtistForm.SetDetails(new clsArtist());
+
                 else
                 {
                     _ArtistFormList.Add(prArtistName, lcArtistForm);
                     lcArtistForm.refreshFormFromDB(prArtistName);
+
                 }
             }
             else
@@ -39,11 +41,13 @@ namespace Gallery3WinForm
                 lcArtistForm.Activate();
 
             }
+
         }
 
         private async void refreshFormFromDB(string prArtistName)
         {
             SetDetails(await ServiceClient.GetArtistAsync(prArtistName));
+            UpdateDisplay();
         }
 
         private void updateTitle(string prGalleryName)
@@ -54,20 +58,9 @@ namespace Gallery3WinForm
 
         private void UpdateDisplay()
         {
-            //if (_WorksList.SortOrder == 0)
-            //{
-            //    _WorksList.SortByName();
-            //    rbByName.Checked = true;
-            //}
-            //else
-            //{
-            //    _WorksList.SortByDate();
-            //    rbByDate.Checked = true;
-            //}
-
-            //lstWorks.DataSource = null;
-            //lstWorks.DataSource = _WorksList;
-            //lblTotal.Text = Convert.ToString(_WorksList.GetTotalValue());
+            lstWorks.DataSource = null;
+            if (_Artist.WorksList != null)
+                lstWorks.DataSource = _Artist.WorksList;
         }
 
         public void UpdateForm()
@@ -137,7 +130,7 @@ namespace Gallery3WinForm
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private async void btnClose_Click(object sender, EventArgs e)
         {
             if (isValid() == true)
                 try
@@ -145,11 +138,12 @@ namespace Gallery3WinForm
                     pushData();
                     if (txtName.Enabled)
                     {
-                        //_Artist.NewArtist();
-                        MessageBox.Show("Artist added!", "Success");
+                        MessageBox.Show(await ServiceClient.InsertArtistAsync(_Artist));
                         frmMain.Instance.UpdateDisplay();
-                        txtName.Enabled = false;
+                        txtName.Enabled = true;
                     }
+                    else
+                        MessageBox.Show(await ServiceClient.UpdateArtistAsync(_Artist));
                     Hide();
                 }
                 catch (Exception ex)

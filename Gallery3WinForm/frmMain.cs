@@ -60,19 +60,18 @@ namespace Gallery3WinForm
                     MessageBox.Show(ex.Message, "This should never occur");
                 }
         }
-
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmArtist.Run(null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error adding new artist");
+            }
+        }
         #region
-        //private void btnAdd_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        frmArtist.Run(new clsArtist(_ArtistList));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error adding new artist");
-        //    }
-        //}
         //private void btnQuit_Click(object sender, EventArgs e)
         //{
         //    try
