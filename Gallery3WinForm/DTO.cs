@@ -30,6 +30,14 @@ namespace Gallery3WinForm
         public float? Weight { get; set; }
         public string Material { get; set; }
 
+        public static readonly string FACTORY_PROMPT = "Enter P for Painting, S for Sculpture and H for Photograph";
+
+        public static clsAllWork NewWork(char prChoice)
+        {
+            return new clsAllWork() { WorkType = char.ToUpper(prChoice) };
+        }
+
+
         public override string ToString()
         {
             return Name + "\t" + Date.ToShortDateString();

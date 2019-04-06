@@ -40,7 +40,7 @@ namespace Gallery3WinForm
                 pushData();
                 if (txtName.Enabled)
                 {
-                    MessageBox.Show(await ServiceClient.InstertWorkAsync(_Work));
+                    MessageBox.Show(await ServiceClient.InsertWorkAsync(_Work));
                     txtName.Enabled = false;
                 }
                 else
