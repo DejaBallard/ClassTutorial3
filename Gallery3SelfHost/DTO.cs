@@ -21,6 +21,7 @@ namespace Gallery3SelfHost
         public DateTime Date { get; set; }
         public decimal Value { get; set; }
         public char WorkType { get; set; }
+        public string ArtistName { get; set; }
         //Painting and Photograph
         public float? Height { get; set; }
         public float? Width { get; set; }

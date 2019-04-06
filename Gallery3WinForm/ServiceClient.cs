@@ -27,6 +27,16 @@ namespace Gallery3WinForm
             return await InsertOrUpdateAsync(prArtist, "http://localhost:60064/api/gallery/PutArtist", "PUT");
         }
 
+        internal async static Task<string> InstertWorkAsync(clsAllWork work)
+        {
+            return await InsertOrUpdateAsync(work, "Http://localhost:60064/api/gallery/PostArtWork", "POST");
+        }
+
+        internal async static Task<string> UpdateWorkAsync(clsAllWork work)
+        {
+            return await InsertOrUpdateAsync(work, "Http://localhost:60064/api/gallery/PutArtWork", "PUT");
+        }
+
         private async static Task<string> InsertOrUpdateAsync<TItem>(TItem prItem, string prUrl, string prRequest)
         {
             using (HttpRequestMessage lcReqMessage = new HttpRequestMessage(new HttpMethod(prRequest), prUrl))

@@ -46,10 +46,12 @@ namespace Gallery3SelfHost
             return lcWorks;
         }
 
+
         private clsAllWork dataRow2AllWork(DataRow prDataRow)
         {
             return new clsAllWork()
             {
+                ArtistName = Convert.ToString(prDataRow["ArtistName"]),
                 Name = Convert.ToString(prDataRow["Name"]),
                 Date = Convert.ToDateTime(prDataRow["Date"]),
                 Value = Convert.ToDecimal(prDataRow["Value"]),
@@ -59,6 +61,7 @@ namespace Gallery3SelfHost
                 Type = Convert.ToString(prDataRow["Type"]),
                 Material = Convert.ToString(prDataRow["Material"]),
                 Weight = prDataRow["Weight"] is DBNull ? (float?)null : Convert.ToSingle(prDataRow["Weight"])
+                
             };
         }
 
@@ -70,7 +73,7 @@ namespace Gallery3SelfHost
                 "UPDATE Artist SET Speciality = @Speciality, Phone = @Phone WHERE Name = @Name",
                 prepareArtistParameters(prArtist));
                 if (lcRecCount == 1)
-                    return "One artist updated";
+                    return "Artist: "+prArtist.Name+" has been updated";
                 else
                     return "Unexpected artist update count: " + lcRecCount;
             }
@@ -88,7 +91,7 @@ namespace Gallery3SelfHost
                 "INSERT INTO Artist(Name,Phone,Speciality)Values(@Name,@Phone,@Speciality);",
                 prepareArtistParameters(prArtist));
                 if (lcRecCount == 1)
-                    return "One artist Inserted";
+                    return "Artist: "+prArtist.Name+" has been added";
                 else
                     return "Unexpected artist update count: " + lcRecCount;
             }
@@ -107,6 +110,56 @@ namespace Gallery3SelfHost
             return par;
 
         }
+
+        public string PostArtWork(clsAllWork prWork)
+        { // insert
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute("INSERT INTO Work " +
+                    "(WorkType, Name, Date, Value, Width, Height, Type, Weight, Material, ArtistName) " +
+                    "VALUES (@WorkType, @Name, @Date, @Value, @Width, @Height, @Type, @Weight, @Material, @ArtistName)",
+                    prepareWorkParameters(prWork));
+                if (lcRecCount == 1) return "Artwork: "+prWork.Name+" has been added";
+                else return "Unexpected artwork insert count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            { return ex.GetBaseException().Message; }
+        }
+
+        public string PutArtWork(clsAllWork prWork)
+        { // insert
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute("UPDATE Work SET WorkType = @WorkType, Date = @Date, Value = @Value, Width = @Width, Height = @Height, Type = @Type, Weight = @Weight, Material = @Material WHERE ArtistName = @ArtistName AND Name = @Name ",
+                    prepareWorkParameters(prWork));
+                if (lcRecCount == 1) return "Artwork: "+prWork.ArtistName+" has updated";
+                else return "Unexpected artwork insert count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            { return ex.GetBaseException().Message; }
+        }
+
+
+
+        private Dictionary<string, object> prepareWorkParameters(clsAllWork prWork)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(10);
+            par.Add("Name", prWork.Name);
+            par.Add("Date", prWork.Date);
+            par.Add("Value", prWork.Value);
+            par.Add("WorkType", prWork.WorkType);
+            par.Add("Height", prWork.Height);
+            par.Add("Width", prWork.Width);
+            par.Add("Type", prWork.Type);
+            par.Add("Weight", prWork.Weight);
+            par.Add("Material", prWork.Material);
+            par.Add("ArtistName", prWork.ArtistName);
+            // Etc: your turn: 
+            return par;
+        }
+
     }
+
+
 }
 
