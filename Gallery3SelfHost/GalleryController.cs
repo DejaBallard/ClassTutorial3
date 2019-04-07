@@ -139,8 +139,23 @@ namespace Gallery3SelfHost
             { return ex.GetBaseException().Message; }
         }
 
-
-
+        public string DeleteArtwork(string WorkName, string ArtistName)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute(
+                "DELETE FROM Work WHERE Name = "+WorkName+" AND ArtistName = "+ArtistName,
+                prepareArtistParameters(null));
+                if (lcRecCount == 1)
+                    return "Artwork: "+WorkName+" has been removed from "+ArtistName;
+                else
+                    return "Unexpected artist update count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
         private Dictionary<string, object> prepareWorkParameters(clsAllWork prWork)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(10);
@@ -157,6 +172,7 @@ namespace Gallery3SelfHost
             // Etc: your turn: 
             return par;
         }
+
 
     }
 

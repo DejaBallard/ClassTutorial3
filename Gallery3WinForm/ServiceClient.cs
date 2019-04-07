@@ -48,5 +48,20 @@ namespace Gallery3WinForm
                 return await lcRespMessage.Content.ReadAsStringAsync();
             }
         }
+
+        internal async static Task<string> DeleteArtworkAsync(clsAllWork prWork)
+        {
+            using (HttpClient lcHttpClient = new HttpClient())
+
+            {
+
+                HttpResponseMessage lcRespMessage = await lcHttpClient.DeleteAsync
+
+                ($"http://localhost:60064/api/gallery/DeleteArtWork?WorkName={prWork.Name}&ArtistName={prWork.ArtistName}");
+
+                return await lcRespMessage.Content.ReadAsStringAsync();
+
+            }
+        }
     }
 }

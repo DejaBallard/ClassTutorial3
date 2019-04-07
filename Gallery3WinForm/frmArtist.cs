@@ -131,14 +131,14 @@ namespace Gallery3WinForm
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
             int lcIndex = lstWorks.SelectedIndex;
 
             if (lcIndex >= 0 && MessageBox.Show("Are you sure?", "Deleting work", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //_WorksList.RemoveAt(lcIndex);
-                //UpdateDisplay();
+                MessageBox.Show(await ServiceClient.DeleteArtworkAsync(lstWorks.SelectedItem as clsAllWork));
+                refreshFormFromDB(_Artist.Name);
                 frmMain.Instance.UpdateDisplay();
             }
         }
