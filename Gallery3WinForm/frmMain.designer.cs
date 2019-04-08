@@ -68,6 +68,7 @@ namespace Gallery3WinForm
             this.btnDelete.Size = new System.Drawing.Size(80, 32);
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 

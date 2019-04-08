@@ -25,9 +25,17 @@ namespace Gallery3WinForm
             server.OpenAsync().Wait();
             Console.WriteLine("Gallery Web-API Self hosted on" + _baseAddress);
             Console.WriteLine("Hit Enter to exit...");
-            GalleryController clsGalleryController = new GalleryController();
-            List<string> list = clsGalleryController.GetArtistNames();
-            Console.WriteLine(list[1]);
+            Console.WriteLine("Testing database connection...");
+            try
+            {
+                GalleryController clsGalleryController = new GalleryController();
+                List<string> list = clsGalleryController.GetArtistNames();
+                Console.WriteLine("Successfully Connected!");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("connection failed: "+ e);
+            }
             Console.ReadLine();
             server.CloseAsync().Wait();
         }

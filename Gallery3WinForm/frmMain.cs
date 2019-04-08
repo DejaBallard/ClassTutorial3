@@ -85,24 +85,23 @@ namespace Gallery3WinForm
         //    Close();
         //}
 
-        //private void btnDelete_Click(object sender, EventArgs e)
-        //{
-        //    string lcKey;
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            string lcKey;
 
-        //    lcKey = Convert.ToString(lstArtists.SelectedItem);
-        //    if (lcKey != null && MessageBox.Show("Are you sure?", "Deleting artist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-        //        try
-        //        {
-        //            _ArtistList.Remove(lcKey);
-        //            lstArtists.ClearSelected();
-        //            UpdateDisplay();
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, "Error deleting artist");
-        //        }
-        //}
+            lcKey = Convert.ToString(lstArtists.SelectedItem);
+            if (lcKey != null && MessageBox.Show("Are you sure?", "Deleting artist", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                try
+                {
+                    MessageBox.Show(await ServiceClient.DeleteArtist(lcKey));
+                    lstArtists.ClearSelected();
+                    UpdateDisplay();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error deleting artist");
+                }
+        }
 
         //private void frmMain_Load(object sender, EventArgs e)
         //{
@@ -127,5 +126,6 @@ namespace Gallery3WinForm
         //    GalleryNameChanged(_ArtistList.GalleryName);
         //}
         #endregion
+
     }
 }

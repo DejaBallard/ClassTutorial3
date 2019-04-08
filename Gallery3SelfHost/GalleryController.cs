@@ -10,6 +10,7 @@ namespace Gallery3SelfHost
     {
         public List<string> GetArtistNames()
         {
+
             DataTable lcResult = clsDbConnection.GetDataTable("SELECT Name FROM Artist", null);
             List<string> lcNames = new List<string>();
             foreach (DataRow dr in lcResult.Rows)
@@ -45,8 +46,30 @@ namespace Gallery3SelfHost
                 lcWorks.Add(dataRow2AllWork(dr));
             return lcWorks;
         }
+        public string DeleteArtist(string ArtistName)
+        {
+            try
+            {
+                int lcRecCount = clsDbConnection.Execute(
+                "DELETE FROM Artist WHERE Name = @ArtistName",
+                prepareDeleteArtistParameters(ArtistName));
+                if (lcRecCount == 1)
+                    return "Artist:" + ArtistName + " has been removed";
+                else
+                    return "Unexpected artist update count: " + lcRecCount;
+            }
+            catch (Exception ex)
+            {
+                return ex.GetBaseException().Message;
+            }
+        }
 
-
+        private Dictionary<string, object> prepareDeleteArtistParameters(string prName)
+        {
+            Dictionary<string,object> par = new Dictionary<string, object>();
+            par.Add("ArtistName",prName);
+            return par;
+        }
         private clsAllWork dataRow2AllWork(DataRow prDataRow)
         {
             return new clsAllWork()
@@ -144,8 +167,8 @@ namespace Gallery3SelfHost
             try
             {
                 int lcRecCount = clsDbConnection.Execute(
-                "DELETE FROM Work WHERE Name = "+WorkName+" AND ArtistName = "+ArtistName,
-                prepareArtistParameters(null));
+                "DELETE FROM Work WHERE Name = @WorkName AND ArtistName = @ArtistName",
+                prepareDeleteWorkParameters(WorkName, ArtistName));
                 if (lcRecCount == 1)
                     return "Artwork: "+WorkName+" has been removed from "+ArtistName;
                 else
@@ -155,6 +178,13 @@ namespace Gallery3SelfHost
             {
                 return ex.GetBaseException().Message;
             }
+        }
+        private Dictionary<string, object> prepareDeleteWorkParameters(string prWork, string prArtist)
+        {
+            Dictionary<string, object> par = new Dictionary<string, object>(2);
+            par.Add("WorkName", prWork);
+            par.Add("ArtistName", prArtist);
+            return par;
         }
         private Dictionary<string, object> prepareWorkParameters(clsAllWork prWork)
         {
