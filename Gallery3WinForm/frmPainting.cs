@@ -9,11 +9,18 @@ namespace Gallery3WinForm
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Factory method
+        /// </summary>
+        /// <param name="prPainting"></param>
         public static void Run(clsAllWork prPainting)
         {
             Instance.SetDetails(prPainting);
         }
 
+        /// <summary>
+        /// Filling the form with existing data
+        /// </summary>
         protected override void updateForm()
         {
             base.updateForm();
@@ -23,6 +30,9 @@ namespace Gallery3WinForm
             txtType.Text = _Work.Type;
         }
 
+        /// <summary>
+        /// Saving the data from the display to the class
+        /// </summary>
         protected override void pushData()
         {
             base.pushData();

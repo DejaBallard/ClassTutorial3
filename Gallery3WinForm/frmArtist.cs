@@ -4,19 +4,28 @@ using System.Collections.Generic;
 
 namespace Gallery3WinForm
 {
+    /// <summary>
+    /// Form that displays all the artists from the database
+    /// </summary>
     public partial class frmArtist : Form
     {
+
         private clsArtist _Artist;
-        //private clsWorksList _WorksList;
 
         private static Dictionary<string, frmArtist> _ArtistFormList =
             new Dictionary<string, frmArtist>();
-
+        /// <summary>
+        /// Private so no other class can create a frmArtist. Must go through factory method
+        /// </summary>
         private frmArtist()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Factory Method, which checks to see if the run has came with data(updating) or creating a brand new artist
+        /// </summary>
+        /// <param name="prArtistName">Artist name that was selected</param>
         public static void Run(string prArtistName)
         {
             frmArtist lcArtistForm;
@@ -27,35 +36,42 @@ namespace Gallery3WinForm
                 lcArtistForm = new frmArtist();
                 if (string.IsNullOrEmpty(prArtistName))
                     lcArtistForm.SetDetails(new clsArtist());
-
                 else
                 {
                     _ArtistFormList.Add(prArtistName, lcArtistForm);
                     lcArtistForm.refreshFormFromDB(prArtistName);
-
                 }
             }
             else
             {
                 lcArtistForm.Show();
                 lcArtistForm.Activate();
-
             }
-
         }
 
+        /// <summary>
+        /// Getting data from the database to refresh the display. used to check if everything is up to date
+        /// </summary>
+        /// <param name="prArtistName">Artist's name that the SQL will search for and retrive</param>
         private async void refreshFormFromDB(string prArtistName)
         {
             SetDetails(await ServiceClient.GetArtistAsync(prArtistName));
             UpdateDisplay();
         }
 
+        /// <summary>
+        /// From Tutorial 2. Used with a Delegate to auto update the title of the form
+        /// </summary>
+        /// <param name="prGalleryName"></param>
         private void updateTitle(string prGalleryName)
         {
             if (!string.IsNullOrEmpty(prGalleryName))
                 Text = "Artist Details - " + prGalleryName;
         }
 
+        /// <summary>
+        /// Updating the artists work list
+        /// </summary>
         private void UpdateDisplay()
         {
             lstWorks.DataSource = null;
@@ -63,6 +79,9 @@ namespace Gallery3WinForm
                 lstWorks.DataSource = _Artist.WorksList;
         }
 
+        /// <summary>
+        /// Used when the form opens with existing data. populates the display with data.
+        /// </summary>
         public void UpdateForm()
         {
             txtName.Text = _Artist.Name;
@@ -74,6 +93,10 @@ namespace Gallery3WinForm
             //updateTitle(_Artist.ArtistList.GalleryName);
         }
 
+        /// <summary>
+        /// assigning the local artist too the artist that was passed through, then update the display
+        /// </summary>
+        /// <param name="prArtist">data of the artist, which was selected from previous form(frmMain)</param>
         public void SetDetails(clsArtist prArtist)
         {
             _Artist = prArtist;
@@ -85,6 +108,9 @@ namespace Gallery3WinForm
             Show();
         }
 
+        /// <summary>
+        /// Updating or setting values that has been entered into the class Artist
+        /// </summary>
         private void pushData()
         {
             _Artist.Name = txtName.Text;
@@ -93,8 +119,14 @@ namespace Gallery3WinForm
             //_WorksList.SortOrder = _SortOrder; // no longer required, updated with each rbByDate_CheckedChanged
         }
 
+        /// <summary>
+        /// Add a new artwork to the artist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnAdd_Click(object sender, EventArgs e)
         {
+            //open up a messagebox, asking what type of artwork they want to add.
             string lcReply = new InputBox(clsAllWork.FACTORY_PROMPT).Answer;
             if (!string.IsNullOrEmpty(lcReply))
             {
@@ -118,6 +150,11 @@ namespace Gallery3WinForm
             }
         }
 
+        /// <summary>
+        /// Open up an existing artwork
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstWorks_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -131,6 +168,11 @@ namespace Gallery3WinForm
             }
         }
 
+        /// <summary>
+        /// Delete an existing artwork
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnDelete_Click(object sender, EventArgs e)
         {
             int lcIndex = lstWorks.SelectedIndex;
@@ -143,6 +185,11 @@ namespace Gallery3WinForm
             }
         }
 
+        /// <summary>
+        /// Save the data locally, then either insert or update the database with the new information. then hide
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnClose_Click(object sender, EventArgs e)
         {
             if (isValid() == true)
@@ -165,6 +212,10 @@ namespace Gallery3WinForm
                 }
         }
 
+        /// <summary>
+        /// check to see if data is valid
+        /// </summary>
+        /// <returns></returns>
         private Boolean isValid()
         {
             if (txtName.Enabled && txtName.Text != "")
@@ -179,6 +230,11 @@ namespace Gallery3WinForm
                 return true;
         }
 
+        /// <summary>
+        /// Change the order of the artwork
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbByDate_CheckedChanged(object sender, EventArgs e)
         {
             //_WorksList.SortOrder = Convert.ToByte(rbByDate.Checked);

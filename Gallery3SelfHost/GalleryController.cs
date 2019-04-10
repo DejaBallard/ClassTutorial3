@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 
 namespace Gallery3SelfHost
@@ -244,7 +242,7 @@ namespace Gallery3SelfHost
             }
         }
         /// <summary>
-        /// adding the strings into a dictionary for the SQL statement
+        /// Adding the strings into a dictionary for the SQL statement
         /// </summary>
         /// <param name="prWork">name of the Artwork</param>
         /// <param name="prArtist">name of the artist name</param>

@@ -11,11 +11,18 @@ namespace Gallery3WinForm
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Factory Method
+        /// </summary>
+        /// <param name="prSculpture"></param>
         public static void Run(clsAllWork prSculpture)
         {
             Instance.SetDetails(prSculpture);
         }
 
+        /// <summary>
+        /// Filling the form with existing data
+        /// </summary>
         protected override void updateForm()
         {
             base.updateForm();
@@ -24,6 +31,10 @@ namespace Gallery3WinForm
             txtMaterial.Text = _Work.Material;
         }
 
+
+        /// <summary>
+        /// Save data from the display to the class
+        /// </summary>
         protected async override void pushData()
         {
             base.pushData();
