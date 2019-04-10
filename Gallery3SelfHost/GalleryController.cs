@@ -6,8 +6,15 @@ using System.Data;
 
 namespace Gallery3SelfHost
 {
+    /// <summary>
+    /// API controller to be accessed from the "web". in this case its a local port 60064
+    /// </summary>
     public class GalleryController : System.Web.Http.ApiController
     {
+        /// <summary>
+        /// Gets all names from the artist table. this will be used by the GET protocol
+        /// </summary>
+        /// <returns>A list of all the names in the artist table</returns>
         public List<string> GetArtistNames()
         {
 
@@ -18,7 +25,11 @@ namespace Gallery3SelfHost
             return lcNames;
         }
 
-
+        /// <summary>
+        /// Gets all data about one existing artist. This uses the GET protocol
+        /// </summary>
+        /// <param name="Name">String name of the artist you want to search for</param>
+        /// <returns>returns a clsArtist(from DTO.cs) filled with the data returned from the database. else null</returns>
         public clsArtist GetArtist(string Name)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(1);
@@ -37,6 +48,11 @@ namespace Gallery3SelfHost
                 return null;
         }
 
+        /// <summary>
+        /// Gets the artists work linked with the artist you selected.
+        /// </summary>
+        /// <param name="Name">string of the artists name</param>
+        /// <returns>Multiple clsAllwork(from DTO.cs) filled with data retrieved from the database</returns>
         private List<clsAllWork> GetArtistWork(string Name)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(1);
@@ -46,6 +62,12 @@ namespace Gallery3SelfHost
                 lcWorks.Add(dataRow2AllWork(dr));
             return lcWorks;
         }
+
+        /// <summary>
+        /// Deletes artist from the database and all artwork linked with the artist
+        /// </summary>
+        /// <param name="ArtistName">string of the artists name</param>
+        /// <returns>if it was able to delete the data or not, depending on how many rows were effected by the SQL statement</returns>
         public string DeleteArtist(string ArtistName)
         {
             try
@@ -64,12 +86,23 @@ namespace Gallery3SelfHost
             }
         }
 
+        /// <summary>
+        /// Puts the artist details into a dictionary for the SQL statement
+        /// </summary>
+        /// <param name="prName">string name of the artist</param>
+        /// <returns></returns>
         private Dictionary<string, object> prepareDeleteArtistParameters(string prName)
         {
             Dictionary<string,object> par = new Dictionary<string, object>();
             par.Add("ArtistName",prName);
             return par;
         }
+
+        /// <summary>
+        /// Converts all the data from the database into the correct datatypes for the clsallwork( from DTO.cs)
+        /// </summary>
+        /// <param name="prDataRow">the data row from the SQL statement it returned</param>
+        /// <returns>a completed clsAllWork class</returns>
         private clsAllWork dataRow2AllWork(DataRow prDataRow)
         {
             return new clsAllWork()
@@ -88,6 +121,11 @@ namespace Gallery3SelfHost
             };
         }
 
+        /// <summary>
+        /// Updates the existing artist details in the datbase. uses the PUT protocol
+        /// </summary>
+        /// <param name="prArtist">updated clsArtist(from DTO.cs) you want to update to the database</param>
+        /// <returns>row count of if it added or not. depending on the number result. will return a messagebox</returns>
         public string PutArtist(clsArtist prArtist)
         { // update
             try
@@ -106,8 +144,13 @@ namespace Gallery3SelfHost
             }
         }
 
+        /// <summary>
+        /// Inserting a new artist into the databse. uses the post protocol
+        /// </summary>
+        /// <param name="prArtist">newly filled clsArtist(from DTO.cs) to be formated into SQL and inserted</param>
+        /// <returns>row count of if it works or not, or if their is an exception error</returns>
         public string PostArtist(clsArtist prArtist)
-        {
+        {//insert
             try
             {
                 int lcRecCount = clsDbConnection.Execute(
@@ -124,6 +167,11 @@ namespace Gallery3SelfHost
             }
         }
 
+        /// <summary>
+        /// turning the class into a format which the database can use
+        /// </summary>
+        /// <param name="prArtist">clsArtist(from DTO.cs) that you are turning into a dictonary</param>
+        /// <returns>Dictionary of the artist data, to be used in the SQL statement</returns>
         private Dictionary<string, object> prepareArtistParameters(clsArtist prArtist)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(3);
@@ -134,6 +182,11 @@ namespace Gallery3SelfHost
 
         }
 
+        /// <summary>
+        /// Inserting the artwork into the database
+        /// </summary>
+        /// <param name="prWork">Taking the newly made clsAllWork(from DTO.cs) is being prepared for SQL insertion</param>
+        /// <returns>row count of how many rows were effected by the SQL statemet</returns>
         public string PostArtWork(clsAllWork prWork)
         { // insert
             try
@@ -149,6 +202,11 @@ namespace Gallery3SelfHost
             { return ex.GetBaseException().Message; }
         }
 
+        /// <summary>
+        /// Updating the database of the selected work
+        /// </summary>
+        /// <param name="prWork">newly updated work data</param>
+        /// <returns>row count of if the SQL statement worked</returns>
         public string PutArtWork(clsAllWork prWork)
         { // insert
             try
@@ -162,6 +220,12 @@ namespace Gallery3SelfHost
             { return ex.GetBaseException().Message; }
         }
 
+        /// <summary>
+        /// Deleting the artwork from the database
+        /// </summary>
+        /// <param name="WorkName">Name of the artwork</param>
+        /// <param name="ArtistName">name of the artist</param>
+        /// <returns>row count of if the deletion worked</returns>
         public string DeleteArtwork(string WorkName, string ArtistName)
         {
             try
@@ -179,6 +243,12 @@ namespace Gallery3SelfHost
                 return ex.GetBaseException().Message;
             }
         }
+        /// <summary>
+        /// adding the strings into a dictionary for the SQL statement
+        /// </summary>
+        /// <param name="prWork">name of the Artwork</param>
+        /// <param name="prArtist">name of the artist name</param>
+        /// <returns>the dictionary of the two parameters </returns>
         private Dictionary<string, object> prepareDeleteWorkParameters(string prWork, string prArtist)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(2);
@@ -186,6 +256,12 @@ namespace Gallery3SelfHost
             par.Add("ArtistName", prArtist);
             return par;
         }
+
+        /// <summary>
+        /// Adding strings into a dictionary for the SQL statement
+        /// </summary>
+        /// <param name="prWork">name of the artwork</param>
+        /// <returns>the dictionary of the parameter</returns>
         private Dictionary<string, object> prepareWorkParameters(clsAllWork prWork)
         {
             Dictionary<string, object> par = new Dictionary<string, object>(10);

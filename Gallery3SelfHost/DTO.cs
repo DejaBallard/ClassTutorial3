@@ -4,8 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+// This is an Data Transfer Object, which is used for transfering data between layers.
 namespace Gallery3SelfHost
 {
+
+    /// <summary>
+    /// Data store for creating Artists
+    /// </summary>
     public class clsArtist
     {
         public string Name { get; set; }
@@ -14,9 +20,13 @@ namespace Gallery3SelfHost
         public List<clsAllWork> WorksList { get; set; }
     }
 
+
+    /// <summary>
+    /// data store for creating all artworks
+    /// </summary>
     public class clsAllWork
     {
-        //Work
+        //Work super class
         public string Name { get; set; }
         public DateTime Date { get; set; }
         public decimal Value { get; set; }

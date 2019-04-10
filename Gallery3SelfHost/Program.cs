@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.SelfHost;
-using Gallery3SelfHost;
 
-namespace Gallery3WinForm
+namespace Gallery3SelfHost
 {
     class Program
     {
@@ -26,15 +25,15 @@ namespace Gallery3WinForm
             Console.WriteLine("Gallery Web-API Self hosted on" + _baseAddress);
             Console.WriteLine("Hit Enter to exit...");
             Console.WriteLine("Testing database connection...");
+                GalleryController clsGalleryController = new GalleryController();
             try
             {
-                GalleryController clsGalleryController = new GalleryController();
                 List<string> list = clsGalleryController.GetArtistNames();
                 Console.WriteLine("Successfully Connected!");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                Console.WriteLine("connection failed: "+ e);
+                Console.WriteLine("connection failed: ");
             }
             Console.ReadLine();
             server.CloseAsync().Wait();
