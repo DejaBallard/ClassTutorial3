@@ -9,13 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="415,60,0,0" VerticalAlignment="Top" Width="65"/>
         <TextBlock x:Name="txbGalleryTitle" HorizontalAlignment="Left" Margin="10,10,0,0" Text="MY GALLERY" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="txbArtistTitle" HorizontalAlignment="Left" Margin="10,35,0,0" Text="My Artists" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ListBox x:Name="lstArtists" HorizontalAlignment="Left" Height="697" Margin="10,60,0,0" VerticalAlignment="Top" Width="400"/>
-        <TextBlock x:Name="txbMessage" HorizontalAlignment="Left" Margin="10,762,0,0" Text="Messages" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="415,60,0,0" VerticalAlignment="Top" Width="65"/>
+        <ListBox x:Name="lstArtist" HorizontalAlignment="Left" Height="700" Margin="10,60,0,0" VerticalAlignment="Top" Width="400"/>
         <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="415,97,0,0" VerticalAlignment="Top" Width="65"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="415,134,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="415,134,0,0" VerticalAlignment="Top" Width="65"/>
+        <TextBlock x:Name="txtbMessages" HorizontalAlignment="Left" Margin="10,765,0,0" Text="Messages" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>
