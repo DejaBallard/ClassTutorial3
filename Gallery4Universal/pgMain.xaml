@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="Gallery4Universal.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Gallery4Universal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock x:Name="txtGallerTitle" HorizontalAlignment="Left" Margin="10,10,0,0" Text="MY GALLERY" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
+        <TextBlock x:Name="txtArtistTitle" HorizontalAlignment="Left" Margin="10,37,0,0" Text="My Artist" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Normal" FontSize="36"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="700" Margin="10,90,0,0" VerticalAlignment="Top" Width="400"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="415,90,0,0" VerticalAlignment="Top" Width="130" Height="50" FontSize="20"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="415,189,0,0" VerticalAlignment="Top" Width="130" Height="44.1" FontSize="20"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="415,292,0,0" VerticalAlignment="Top" FontSize="20" Width="130" Height="50"/>
+        <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="10,795,0,0" Text="Messages" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
