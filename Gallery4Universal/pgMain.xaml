@@ -9,13 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock x:Name="txtGallerTitle" HorizontalAlignment="Left" Margin="10,10,0,0" Text="MY GALLERY" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe UI" FontSize="20"/>
-        <TextBlock x:Name="txtArtistTitle" HorizontalAlignment="Left" Margin="10,37,0,0" Text="My Artist" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Normal" FontSize="36"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="700" Margin="10,90,0,0" VerticalAlignment="Top" Width="400"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="415,90,0,0" VerticalAlignment="Top" Width="130" Height="50" FontSize="20"/>
-        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="415,189,0,0" VerticalAlignment="Top" Width="130" Height="44.1" FontSize="20"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="415,292,0,0" VerticalAlignment="Top" FontSize="20" Width="130" Height="50"/>
-        <TextBlock x:Name="txtMessage" HorizontalAlignment="Left" Margin="10,795,0,0" Text="Messages" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbGalleryTitle" HorizontalAlignment="Left" Margin="10,10,0,0" Text="MY GALLERY" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txbArtistTitle" HorizontalAlignment="Left" Margin="10,35,0,0" Text="My Artists" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ListBox x:Name="lstArtists" HorizontalAlignment="Left" Height="697" Margin="10,60,0,0" VerticalAlignment="Top" Width="400"/>
+        <TextBlock x:Name="txbMessage" HorizontalAlignment="Left" Margin="10,762,0,0" Text="Messages" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="415,60,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="415,97,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="415,134,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

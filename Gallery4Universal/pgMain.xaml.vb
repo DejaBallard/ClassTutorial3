@@ -6,7 +6,4 @@
 Public NotInheritable Class MainPage
     Inherits Page
 
-    Private Sub Button_Click(sender As Object, e As RoutedEventArgs) Handles button.Click
-
-    End Sub
 End Class

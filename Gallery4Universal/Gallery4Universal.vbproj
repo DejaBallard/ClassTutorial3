@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{352FFE29-6FF0-4F84-948F-8070FF8A161F}</ProjectGuid>
+    <ProjectGuid>{F551CD39-D0F9-4F12-B17B-81E874E1E92B}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <RootNamespace>Gallery4Universal</RootNamespace>
     <AssemblyName>Gallery4Universal</AssemblyName>

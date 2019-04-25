@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="40088ba8-6ef2-4ac5-8db1-92d1b145a3c7"
+    Name="c8c678f2-7e07-4d0d-b02b-fc094d58d743"
     Publisher="CN=deja9"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="40088ba8-6ef2-4ac5-8db1-92d1b145a3c7" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="c8c678f2-7e07-4d0d-b02b-fc094d58d743" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Gallery4Universal</DisplayName>
