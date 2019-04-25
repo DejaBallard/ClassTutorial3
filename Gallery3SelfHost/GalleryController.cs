@@ -9,6 +9,21 @@ namespace Gallery3SelfHost
     /// </summary>
     public class GalleryController : System.Web.Http.ApiController
     {
+        public string TestConnection()
+        {
+            try {
+                DataTable lcResult = clsDbConnection.GetDataTable("SELECT Name FROM Artist", null);
+                return "Connected Succesfully";
+            }
+            catch(Exception e)
+            {
+                return "Connection Failed: "+e.ToString();
+            }
+        }
+
+
+
+
         /// <summary>
         /// Gets all names from the artist table. this will be used by the GET protocol
         /// </summary>

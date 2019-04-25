@@ -22,16 +22,9 @@ namespace Gallery3SelfHost
             Console.WriteLine("Gallery Web-API Self hosted on" + _baseAddress);
             Console.WriteLine("Hit Enter to exit...");
             Console.WriteLine("Testing database connection...");
-                GalleryController clsGalleryController = new GalleryController();
-            try
-            {
-                List<string> list = clsGalleryController.GetArtistNames();
-                Console.WriteLine("Successfully Connected!");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("connection failed: ");
-            }
+            GalleryController clsGalleryController = new GalleryController();
+            string result = clsGalleryController.TestConnection();
+            Console.WriteLine(result);
             Console.ReadLine();
             server.CloseAsync().Wait();
         }

@@ -20,11 +20,42 @@ namespace Gallery4Universal
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public partial class pgMain : Page
     {
-        public MainPage()
+
+        public pgMain()
         {
             this.InitializeComponent();
+        }
+
+        private async void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                lstArtists.ItemsSource = await ServiceClient.GetArtistNamesAsync();
+            }
+            catch(Exception ex) {
+                txbMessage.Text = "Error: " + ex;
+            }
+        }
+
+        private void editArtist()
+        {
+            if (lstArtists.SelectedItem != null)
+            {
+                Frame.Navigate(typeof(pgArtist), lstArtists.SelectedItem);
+            }
+        }
+
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            editArtist();
+        }
+
+        private void LstArtists_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            editArtist();
         }
     }
 }
