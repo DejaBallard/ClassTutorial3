@@ -11,17 +11,17 @@
     <Grid>
         <TextBlock x:Name="txbGallery" HorizontalAlignment="Left" Margin="10,10,0,0" Text="MY GALLERY" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="txbEditArtistTitle" HorizontalAlignment="Left" Margin="10,35,0,0" Text="Edit Artist" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="80,59,0,0" VerticalAlignment="Top" PlaceholderText="" TextAlignment="Right" Width="230" FontStretch="Normal"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="80,59,0,0" VerticalAlignment="Top" PlaceholderText="" TextAlignment="Left" Width="230" FontStretch="Normal"/>
         <TextBox x:Name="txtSpeciality" HorizontalAlignment="Left" Margin="80,96,0,0"  VerticalAlignment="Top" Width="230"/>
         <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Margin="80,133,0,0"  VerticalAlignment="Top" Width="230"/>
         <TextBlock x:Name="lblName" HorizontalAlignment="Left" Margin="10,65,0,0" Text="Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="lblSpeciality" HorizontalAlignment="Left" Margin="10,102,0,0" Text="Speciality:" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock x:Name="lblPhone" HorizontalAlignment="Left" Margin="10,139,0,0" Text="Phone:" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <ListBox x:Name="lstArtwork" HorizontalAlignment="Left" Height="300" Margin="10,170,0,0" VerticalAlignment="Top" Width="230"/>
+        <ListBox x:Name="lstArtwork" HorizontalAlignment="Left" Height="300" Margin="10,170,0,0" VerticalAlignment="Top" Width="230" DoubleTapped="LstArtwork_DoubleTapped"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="245,170,0,0" VerticalAlignment="Top" FontFamily="Segoe UI" Width="65"/>
-        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="245,207,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="245,207,0,0" VerticalAlignment="Top" Width="65" Click="BtnEdit_Click"/>
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="245,244,0,0" VerticalAlignment="Top" Width="65"/>
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="245,281,0,0" VerticalAlignment="Top" Width="65"/>
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="245,281,0,0" VerticalAlignment="Top" Width="65" Click="BtnSave_Click"/>
 
         <ScrollViewer HorizontalAlignment="Left" Height="100" Margin="10,475,0,0" VerticalAlignment="Top" Width="300" FontFamily="Segoe UI">
             <TextBlock x:Name="txbMessage" TextWrapping="Wrap" Text="Messages" VerticalAlignment="Top" Width="329" HorizontalAlignment="Stretch"/>

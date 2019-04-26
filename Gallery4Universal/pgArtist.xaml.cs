@@ -31,11 +31,10 @@ namespace Gallery4Universal
 
         private void UpdateDisplay()
         {
-            if (!string.IsNullOrEmpty(_Artist.Name)) { txtName.IsEnabled = false; }
             txtName.Text = _Artist.Name;
             txtPhone.Text = _Artist.Phone;
             txtSpeciality.Text = _Artist.Speciality;
-
+            txtName.IsEnabled = string.IsNullOrEmpty(_Artist.Name);
             lstArtwork.ItemsSource = _Artist.WorksList;
         }
 
@@ -46,6 +45,27 @@ namespace Gallery4Universal
             _Artist.Speciality = txtSpeciality.Text;
 
         }
+
+        private async void saveArtist()
+        {
+            try
+            {
+                pushData();
+                if (txtName.IsEnabled)
+                {
+                    txbMessage.Text +=
+                        await ServiceClient.InsertArtistAsync(_Artist) + '\n';
+                    txtName.IsEnabled = false;
+                }
+                else txbMessage.Text +=
+                        await ServiceClient.UpdateArtistAsync(_Artist) + '\n';
+            }
+            catch (Exception ex)
+            {
+                txbMessage.Text += ex;
+            }
+        }
+
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -57,6 +77,35 @@ namespace Gallery4Universal
             }
             else // no parameter -> new artist!
                 _Artist = new clsArtist();
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            saveArtist();
+            base.OnNavigatingFrom(e);
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            saveArtist();
+        }
+
+        private void editWork(clsAllWork prWork)
+        {
+            if(prWork != null)
+            {
+                Frame.Navigate(typeof(pgWork), prWork);
+            }
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            editWork(lstArtwork.SelectedItem as clsAllWork);
+        }
+
+        private void LstArtwork_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            editWork(lstArtwork.SelectedItem as clsAllWork);
         }
     }
 }

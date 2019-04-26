@@ -120,14 +120,27 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DTO.cs" />
+    <Compile Include="IWorkControl.cs" />
     <Compile Include="pgArtist.xaml.cs">
       <DependentUpon>pgArtist.xaml</DependentUpon>
     </Compile>
     <Compile Include="pgMain.xaml.cs">
       <DependentUpon>pgMain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pgWork.xaml.cs">
+      <DependentUpon>pgWork.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClient.cs" />
+    <Compile Include="ucPainting.xaml.cs">
+      <DependentUpon>ucPainting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucPhotograph.xaml.cs">
+      <DependentUpon>ucPhotograph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ucSculpture.xaml.cs">
+      <DependentUpon>ucSculpture.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -157,6 +170,22 @@
     <Page Include="pgMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="pgWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucPainting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucPhotograph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ucSculpture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
